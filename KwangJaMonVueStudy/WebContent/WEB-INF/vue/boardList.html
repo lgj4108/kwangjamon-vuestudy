@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BoradList For Vue Study By KwangJaMon</title>
+<script src="../lib/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<table>
+			<thead>
+				<tr>
+					<td>
+						게시물 번호
+					</td>
+					<td>
+						제목
+					</td>
+					<td>
+						작성자
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="boardRow in boardList">
+					<td>{{boardRow.id}}</td>
+					<td @click="clickView(boardRow)">{{boardRow.subject}}</td>
+					<td>{{boardRow.name}}</td>
+				</tr>
+				<!-- <board-list v-for="boardRow in boradList" v-bind:list="boardRow" v-bind:key="boardRow.id"></board-list> -->
+			</tbody>
+		</table>
+	</div>
+</body>
+<script>
+	/* Vue.component('board-list',{
+		props : ['list']
+	   ,template : '<tr><td>{{list.id}}</td><td v-bind:click="boardView">{{list.subject}}</td><td>{{list.name}}</td></tr>'
+	}); */
+
+	var app = new Vue({
+		el : '#app',
+		data : {
+			boardList : [
+				{id : 0 , subject : '테스트1', name : 'KwangJaMon1'}
+				,{id : 1 , subject : '테스트2', name : 'KwangJaMon2'}
+				,{id : 2 , subject : '테스트3', name : 'KwangJaMon3'}
+			]
+		},
+		methods: {
+			clickView : function(row){
+				alert(row.id + ", " + row.subject + ", " + row.name);
+			}
+		}
+	});
+	
+	
+</script>
+</html>
